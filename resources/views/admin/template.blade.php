@@ -166,6 +166,21 @@
         });
 
     })*/
+    function preview_images()
+    {
+        console.log("prevew_images")
+        let files = document.getElementById("att").files;
+        var total_file=files.length;
+        for(var i=0;i<total_file;i++)
+        {
+            $('#image_preview').append($("<div><div>").addClass('col-md-2').append($('<div></div>').addClass('card').append(
+                $('<img/>').addClass('img-responsive card-img').attr('height','100px').attr('width','100px').attr('src',URL.createObjectURL(event.target.files[i]))
+            ).append(
+                $('<div></div>').addClass('card-img-overlay m-0 p-2 text-right').append($('<button></button>').addClass('btn-sm btn-dark').append($('<span></span>').addClass('fa fa-times')).click(function (e){e.preventDefault();}))
+            )))
+        }
+    }
+
 </script>
 <script src="{{asset("js/xychart.js")}}"></script>
 <script src="{{asset("js/pieChart.js")}}"></script>

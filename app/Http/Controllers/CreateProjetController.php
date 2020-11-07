@@ -13,6 +13,28 @@ use Intervention\Image\Facades\Image;
 class CreateProjetController extends Controller
 {
 
+    //get file from db by id
+    public function getFile($id){
+        $pdo = DB::connection()->getPdo();
+        $pdo->beginTransaction();
+
+            $stmt = $pdo->prepare("SELECT id, file, extension "
+                . "FROM attachements"
+                . " WHERE id = :id");
+
+        // query blob from the database
+        $stmt->execute([$id]);
+        $fileData = "";
+        $ext = "";
+        $stmt->bindColumn('file', $fileData, $pdo::PARAM_STR);
+        $stmt->bindColumn('extension', $ext, $pdo::PARAM_STR);
+        $stmt->fetch(\PDO::FETCH_BOUND);
+        $stream = $pdo->pgsqlLOBOpen($fileData, 'r');
+
+        // output the file
+        header("Content-type: image/" . $ext);
+        fpassthru($stream);
+    }
     public function createFileName($file){
         $originName = $file->getClientOriginalName();
         $fileName = pathinfo($originName, PATHINFO_FILENAME);
@@ -23,10 +45,10 @@ class CreateProjetController extends Controller
 
 
 
-    public function insertFile($post_id,$file,$table){
+    public function insertFile($project_id,$file){
 
-        $sql = "INSERT INTO ".$table."(size,extension,name,post_id,file) "
-            . "VALUES(:size,:extension,:name,:post_id,:file)";
+        $sql = "INSERT INTO attachements (size,extension,name,projet_id,file) "
+            . "VALUES(:size,:extension,:name,:projet_id,:file)";
         $pdo = DB::connection()->getPdo();
         try {
             $pdo->beginTransaction();
@@ -48,7 +70,7 @@ class CreateProjetController extends Controller
                 ':size' => $file->getSize(),
                 ':extension' => $file->getClientOriginalExtension(),
                 ':name' =>  $this->createFileName($file),
-                ':projet_id' => $post_id,
+                ':projet_id' => $project_id,
                 ':file'=>$fileData
             ]);
 
@@ -66,49 +88,16 @@ class CreateProjetController extends Controller
         $request->validate([
             'Nom_projet'  => 'required',
             'description' => 'required',
-            'Projet_image1' => 'required|image|max:2048',
-            'Projet_image2' => 'required|image|max:2048',
-            'Projet_image3' => 'required|image|max:2048',
-            'Projet_image4' => 'required|image|max:2048'
         ]);
         $projet = new projet();
         $projet->Nom_projet = $request->get("Nom_projet");
         $projet->description = $request->get("description");
         $projet->save();
-        $image_file1 = $request->Projet_image1;
-        $image_file2 = $request->Projet_image2;
-        $image_file3 = $request->Projet_image3;
-        $image_file4 = $request->Projet_image4;
-        $this->insertFile($projet->id,$image_file1,'attachements');
-        $this->insertFile($projet->id,$image_file2,'attachements');
-        $this->insertFile($projet->id,$image_file3,'attachements');
-        $this->insertFile($projet->id,$image_file4,'attachements');
-        /* $image1 = Image::make($image_file1);
-         $image2 = Image::make($image_file2);
-         $image3 = Image::make($image_file3);
-         $image4 = Image::make($image_file4);
-
-         Response::make($image1->encode('jpeg'));
-         Response::make($image2->encode('jpeg'));
-         Response::make($image3->encode('jpeg'));
-         Response::make($image4->encode('jpeg'));
-
-         $form_data = array(
-             'Nom_projet'  => $request->Nom_projet,
-             'description' => $request->description,
-             'Projet_image1' => $image1,
-             'Projet_image2' => $image2,
-             'Projet_image3' => $image3,
-             'Projet_image4' => $image4
-         );*/
-       // redirect("posts/create");
-       // projet::create($form_data);
-  /*      if(projet::create($form_data)){
-            $request->session()->flash("success","تم تسجيل رسالتك بنجاح");
+        if($request->hasFile('attachements')){
+            foreach ($request->file('attachements') as $file){
+                $this->insertFile($projet->id,$file);
+            }
         }
-        else{
-            $request->session()->flash("error   ","لم نستطع تسجيل رسالتك، المرجوا المحاولة من جديد!");
-        }*/
         return redirect()->back();
     }
     function index()

@@ -1,5 +1,5 @@
 <?php
-use PDF;
+use Barryvdh\DomPDF\PDF;
 
 return [
 

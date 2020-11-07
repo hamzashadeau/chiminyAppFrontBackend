@@ -49,11 +49,9 @@
                     <tr>
                         <td>{{ $row->Nom_projet }}</td>
                         <td>
-                            <img src="data:image/jpg;base64,{{ chunk_split(base64_encode($row->Projet_image1)) }}"  width="35px" height="35px">
-                            <img src="data:image/jpg;base64,{{ chunk_split(base64_encode($row->Projet_image2)) }}"  width="35px" height="35px">
-                            <img src="data:image/jpg;base64,{{ chunk_split(base64_encode($row->Projet_image3)) }}"  width="35px" height="35px">
-                            <img src="data:image/jpg;base64,{{ chunk_split(base64_encode($row->Projet_image4)) }}"  width="35px" height="35px">
-
+                            @foreach($row->attachements as $att)
+                            <img src="{{ url('attachement/'.$att->id) }}"  width="35px" height="35px">
+                            @endforeach
                         </td>
                         <td>
                             <div class="btn-group">

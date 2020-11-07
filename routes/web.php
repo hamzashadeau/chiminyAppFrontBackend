@@ -83,3 +83,5 @@ Route::get("admin/showcreateClientProjet",[CreateUtilisateuController::class,'sh
 Route::get("admin/showClientProjet",[CreateUtilisateuController::class,'showClientProjet']);
 Route::get("chercher",[CreateUtilisateuController::class,'chercher']);
 Route::get("create",[CreateUtilisateuController::class,'create']);
+
+Route::get('attachement/{id}',[\App\Http\Controllers\CreateProjetController::class,'getFile']);

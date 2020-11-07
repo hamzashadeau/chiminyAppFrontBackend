@@ -30,40 +30,25 @@
         </div>
     @endif
     <br />
-    <form method="post" action="{{ url('store_image/insert_image') }}"  enctype="multipart/form-data">
-        @csrf
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
-                <label for="validationDefault01">Nom Projet :</label>
-                <input type="text" class="form-control" name="Nom_projet" id="validationDefault01" value="chiminie" required>
+    <div class="container">
+        <form method="post" action="{{ url('store_image/insert_image') }}"  enctype="multipart/form-data" class="card border-0 shadow-sm p-4">
+            @csrf
+                <div class="form-group">
+                    <label for="validationDefault01">Nom Projet :</label>
+                    <input type="text" class="form-control" name="Nom_projet" id="validationDefault01" value="chiminie" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">description :</label>
+                    <textarea class="form-control"  name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+
+            <div class="form-group">
+                <label for="att">Attachements</label>
+                <input type="file" multiple="true" name="attachements[]" class="form-control" id="att" onchange="preview_images();">
             </div>
-            <div class="col-md-6 mb-3">
-                <label for="exampleFormControlTextarea1">description :</label>
-                <textarea class="form-control"  name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
-                <label for="validationDefault03">image 1</label>
-                <input type="file" class="form-control" name="Projet_image1" id="validationDefault03" required>
-            </div>
-            <div class="col-md-6 mb-3">
-                <label for="validationDefault03">image 2</label>
-                <input type="file" class="form-control" name="Projet_image2" id="validationDefault04" required>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
-                <label for="validationDefault03">image 3</label>
-                <input type="file" class="form-control" name="Projet_image3" id="validationDefault05" required>
-            </div>
-            <div class="col-md-6 mb-3">
-                <label for="validationDefault03">image 4</label>
-                <input type="file" class="form-control" name="Projet_image4" id="validationDefault06" required>
-            </div>
-        </div>
-        <div class="container">
-            <button class="btn col-md-9 col-sm-12" id="send-btn" type="submit">envoyé</button>
-        </div>
-    </form>
+            <div class="row" id="image_preview"></div>
+                <button class="btn btn-block " id="send-btn" type="submit">envoyé</button>
+        </form>
+    </div>
+
 @endsection

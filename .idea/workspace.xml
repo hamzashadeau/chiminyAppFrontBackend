@@ -16,14 +16,25 @@
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:heroku" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
     <select />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c10b6023-fce4-4127-a11b-02c864113afc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CreateProjetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CreateProjetController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/attachement.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/attachement.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/projet.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/projet.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/projetCreate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/projetCreate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/projetShow.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/projetShow.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/template.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/template.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,6 +245,7 @@
       <workItem from="1604713130912" duration="2121000" />
       <workItem from="1604752384528" duration="1149000" />
       <workItem from="1604755897284" duration="1488000" />
+      <workItem from="1604764719250" duration="8249000" />
     </task>
     <servers />
   </component>
