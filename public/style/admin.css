@@ -1,0 +1,59 @@
+.vl {
+    border-left: 6px solid #F3810F;
+    height: 40px;
+}
+#send-btn:hover{
+    background-color: aliceblue;
+    color: black;
+    font-weight: 900;
+    border-radius: 10px;
+}
+#send-btn{
+    border-radius: 10px;
+    background-color: #F3810F;
+}
+.bg-indigo{
+    background-color: #F3810F;
+}
+.text-indigo{
+    color: black;
+}
+.display-search{
+    display: none;
+}
+.btn:focus{
+    box-shadow: none;
+}
+.list-group-item a{
+    color: white;
+}
+.list-group-item:hover{
+    background-color: white;
+}
+.list-group-item:hover .nav-link{
+    color: black;
+}
+.height-item{
+    height: 75px;
+}
+#etat-financiere{
+    display: none;
+}
+#create-projet{
+    display: none;
+}
+#projet{
+    display: none;
+}
+#gain{
+    display: none;
+}
+#messages{
+    display: none;
+}
+#ajouter-Despence{
+    display: none;
+}
+#ajouter-gain{
+    display: none;
+}

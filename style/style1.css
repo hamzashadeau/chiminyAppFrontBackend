@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+.header {
+  text-align: center;
+  padding: 32px;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+  h1.ml2{
+    position: absolute;
+    bottom: 55px;
+    left: 170px;
+    font-weight: 700;
+    font-size: 2.5em;
+  }
+  .ml2 .letter {
+    display: inline-block;
+    line-height: 1em;
+  }
+  #expandedImg{
+    width: 300px;
+     height: 300px;
+  }
+  .columnImage{
+    width: 100px;
+     height: 70px;
+  }
+  .modal-content{
+    width: 500px; 
+    height: 600px;
+  }
+  .imagecard{
+    height: 120px;
+  }
+  .card{
+    margin-bottom: 20px;
+  }
+  .bg{
+    position: relative;
+  }
+ 
+}
+
+@media screen and (min-width: 800px) {
+  .modal-content{
+    width: 900px; 
+    height: 500px;
+  }
+  .columnImage{
+    width: 200px;
+     height: 100px;
+  }
+    #expandedImg{
+      width: 700px;
+       height: 300px;
+    }
+    .card{
+      margin-bottom: 20px;
+    }   
+    h1.ml2{
+      position: absolute;
+      bottom: 25px;
+      left: 560px;
+      font-weight: 900;
+      font-size: 3.5em;
+    }
+    .ml2 .letter {
+      display: inline-block;
+      line-height: 1em;
+    }
+    .bg{
+      position: relative;
+    }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+/*@media screen and (max-width: 600px) {
+  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
